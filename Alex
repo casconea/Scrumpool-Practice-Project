@@ -8,7 +8,7 @@
         /* Styling for the background and overall page */
         body {
             font-family: Arial, sans-serif;
-            background-image: url('https://www.example.com/college-campus.jpg'); /* Replace with a real URL */
+            background-image: url('https://news.vcu.edu/image/08e40032-ae89-4eac-b030-f4a009e7d7b7'); /* Replace with a real URL */
             background-size: cover;
             background-position: center;
             margin: 0;
@@ -101,4 +101,4 @@
     </div>
 
 </body>
-</html>
+</html> 
