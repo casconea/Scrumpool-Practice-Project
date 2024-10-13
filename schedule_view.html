@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Schedule Results</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .course-item {
+            background-color: #e2e2e2;
+            border-radius: 5px;
+            margin: 10px 0;
+            padding: 15px;
+            position: relative;
+        }
+
+        .info-button {
+            display: inline-block;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: bold;
+            margin-left: 10px; /* space between course info and button */
+            position: absolute; /* position button to the right */
+            right: 15px; /* adjust as necessary for alignment */
+            top: 15px; /* vertically center it within the course item */
+        }
+
+        .info-button:hover {
+            background-color: #0056b3;
+            opacity: 0.8;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 10px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Tooltip styling for hover effect */
+        .tooltip {
+            visibility: hidden;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 100%; /* Position above the button */
+            left: 50%;
+            margin-left: -60px; /* Center the tooltip */
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .info-button:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Back button styling */
+        .back-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #f44336; /* Red background */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .back-button:hover {
+            background-color: #d32f2f; /* Darker red on hover */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Your Course Schedule</h1>
+    <div id="output"></div>
+    <button class="back-button" onclick="window.location.href='course_schedule.html'">Back to Login</button>
+</div>
+
+<!-- Modal for Course Details -->
+<div id="courseModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Course Details</h2>
+        <div id="courseDetails"></div>
+    </div>
+</div>
+
+<script>
+// Fetch the data passed from the previous page
+const urlParams = new URLSearchParams(window.location.search);
+const regId = urlParams.get('regId');
+
+if (regId) {
+    // Retrieve CSV data from localStorage
+    const csvData = JSON.parse(localStorage.getItem('csvData')) || [];
+    const filteredData = csvData.filter(row => row['Registration Number'] === regId);
+
+    const outputDiv = document.getElementById('output');
+    if (filteredData.length > 0) {
+        filteredData.forEach(row => {
+            const courseInfo = `
+                <div class="course-item">
+                    <strong>Course:</strong> ${row['Course']}<br>
+                    <strong>Section:</strong> ${row['Section'] || 'N/A'}<br>
+                    <strong>Room:</strong> ${row['Room'] || 'N/A'}<br>
+                    <strong>Days of the Week:</strong> ${row['Days of the Week']}<br>
+                    <strong>Time:</strong> ${row['Time']}<br>
+                    <span class="info-button" onclick="openModal('${row['Instructor'] || 'N/A'}', '${row['Credits'] || 'N/A'}', '${row['Description'] || 'N/A'}')">i
+                        <span class="tooltip">Instructor: ${row['Instructor'] || 'N/A'}<br>Credits: ${row['Credits'] || 'N/A'}<br>Description: ${row['Description'] || 'N/A'}</span>
+                    </span>
+                </div>
+            `;
+            outputDiv.innerHTML += courseInfo;
+        });
+    } else {
+        outputDiv.innerHTML = '<p>No data found for the given registration number.</p>';
+    }
+} else {
+    document.getElementById('output').innerHTML = '<p>No registration number provided.</p>';
+}
+
+function openModal(instructor, credits, description) {
+    const modal = document.getElementById("courseModal");
+    const courseDetails = document.getElementById("courseDetails");
+    courseDetails.innerHTML = `
+        <strong>Instructor:</strong> ${instructor}<br>
+        <strong>Credits:</strong> ${credits}<br>
+        <strong>Description:</strong> ${description}
+    `;
+    modal.style.display = "block";
+}
+
+function closeModal() {
+    document.getElementById("courseModal").style.display = "none";
+}
+
+// Close modal when clicking outside of the modal content
+window.onclick = function(event) {
+    const modal = document.getElementById("courseModal");
+    if (event.target === modal) {
+        closeModal();
+    }
+}
+</script>
+
+</body>
+</html>
