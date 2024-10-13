@@ -167,7 +167,6 @@ if (regId) {
             const courseInfo = `
                 <div class="course-item">
                     <strong>Course:</strong> ${row['Course']}<br>
-                    <strong>Section:</strong> ${row['Section'] || 'N/A'}<br>
                     <strong>Room:</strong> ${row['Room'] || 'N/A'}<br>
                     <strong>Days of the Week:</strong> ${row['Days of the Week']}<br>
                     <strong>Time:</strong> ${row['Time']}<br>
@@ -211,4 +210,3 @@ window.onclick = function(event) {
 
 </body>
 </html>
-
