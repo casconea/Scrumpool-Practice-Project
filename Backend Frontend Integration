@@ -167,7 +167,6 @@ if (regId) {
             const courseInfo = `
                 <div class="course-item">
                     <strong>Course:</strong> ${row['Course']}<br>
-                    <strong>Section:</strong> ${row['Section'] || 'N/A'}<br>
                     <strong>Room:</strong> ${row['Room'] || 'N/A'}<br>
                     <strong>Days of the Week:</strong> ${row['Days of the Week']}<br>
                     <strong>Time:</strong> ${row['Time']}<br>
@@ -191,6 +190,7 @@ function openModal(instructor, credits, description) {
     courseDetails.innerHTML = `
         <strong>Instructor:</strong> ${instructor}<br>
         <strong>Credits:</strong> ${credits}<br>
+        <strong>Description:</strong> ${description}
     `;
     modal.style.display = "block";
 }
@@ -210,3 +210,4 @@ window.onclick = function(event) {
 
 </body>
 </html>
+
