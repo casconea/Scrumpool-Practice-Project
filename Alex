@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login</title>
+    <style>
+        /* Styling for the background and overall page */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://news.vcu.edu/image/08e40032-ae89-4eac-b030-f4a009e7d7b7'); /* Replace with a real URL */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Styling for the container that holds the form */
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Slight transparency to the form background */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+
+        /* Styling for the heading */
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Form structure */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Input fields styling */
+        label, input {
+            margin-bottom: 15px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* Submit button styling */
+        input[type="submit"] {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Additional styling for better visibility */
+        label {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .credits {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Student Login</h2>
+        <!-- Form for entering student registration number -->
+        <form action="DATABASE NEEDED.csv" method="POST">
+            <label for="registration-number">Enter V Number:</label>
+            <input type="text" id="registration-number" name="registration_number" required placeholder="Registration Number">
+            <input type="submit" value="Get Details">
+        </form>
+        <!-- Footer with optional credits or college motto -->
+        <div class="credits">
+            <p>© 2024 Virginia Commonwealth University</p>
+        </div>
+    </div>
+
+</body>
+</html> 
