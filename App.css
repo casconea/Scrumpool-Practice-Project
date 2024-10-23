@@ -1,0 +1,142 @@
+/* App.css */
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to bottom right, #f5f5f5, #eaeaea); /* Soft gradient */
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #ffffff; /* Keeping content area white */
+  border-radius: 8px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+}
+
+.app-title {
+  text-align: center;
+  color: #000000; /* Black */
+  margin-bottom: 20px;
+  font-size: 2.5em; /* Increased size */
+  font-weight: bold;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.input-field {
+  padding: 10px;
+  border: 1px solid #ccc; /* Lighter border */
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.input-field:focus {
+  border-color: #f9d50a; /* Gold */
+  outline: none;
+}
+
+.fetch-button {
+  padding: 10px;
+  background-color: #f9d50a; /* Gold */
+  color: black; /* Black */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.fetch-button:hover {
+  background-color: #d3c508; /* Darker gold */
+  transform: translateY(-2px);
+}
+
+.file-upload {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.file-input {
+  margin-bottom: 10px;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
+
+.student-data {
+  margin-top: 20px;
+}
+
+.data-block {
+  background-color: #ffffff; /* Keeping individual blocks white */
+  padding: 15px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  position: relative; /* For positioning info button */
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.data-block:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Soft shadow */
+}
+
+.data-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info-button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #f9d50a; /* Gold */
+}
+
+.info-button:hover {
+  color: #d3c508; /* Darker gold */
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Shadow for popup */
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #000; /* Black */
+}
